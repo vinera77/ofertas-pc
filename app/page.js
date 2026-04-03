@@ -3,21 +3,141 @@
 import { useMemo, useState } from "react";
 
 const produtos = [
-  { nome: "Placa de Vídeo RX 550 4GB", preco: "R$ 599,90", loja: "Amazon", categoria: "GPU", destaque: "Entrada", link: "https://amzn.to/4sa3YGs" },
-  { nome: "Placa de Vídeo (modelo Amazon)", preco: "Promoção", loja: "Amazon", categoria: "GPU", destaque: "Oferta", link: "https://amzn.to/4sgb6RI" },
-  { nome: "Processador Ryzen 5 5500", preco: "Promoção", loja: "Amazon", categoria: "CPU", destaque: "Custo-benefício", link: "https://amzn.to/41JAWm2" },
-  { nome: "Processador (modelo Amazon)", preco: "Promoção", loja: "Amazon", categoria: "CPU", destaque: "Oferta", link: "https://amzn.to/4mb6vin" },
-  { nome: "Placa-mãe ASUS TUF B550M", preco: "Promoção", loja: "Amazon", categoria: "Placa-mãe", destaque: "Popular", link: "https://amzn.to/4sgilZZ" },
-  { nome: "Fonte Gamer", preco: "Promoção", loja: "Amazon", categoria: "Fonte", destaque: "Essencial", link: "https://amzn.to/4tkPNPK" },
-  { nome: "Fonte (modelo Amazon)", preco: "Promoção", loja: "Amazon", categoria: "Fonte", destaque: "Oferta", link: "https://amzn.to/4mdSZdS" },
-  { nome: "SSD NVMe / Memória", preco: "Promoção", loja: "Amazon", categoria: "Armazenamento", destaque: "Upgrade", link: "https://amzn.to/4bNYgoL" },
-  { nome: "Monitor Gamer", preco: "Promoção", loja: "Amazon", categoria: "Monitor", destaque: "Gamer", link: "https://amzn.to/4dVjvX6" },
-  { nome: "Notebook Gamer", preco: "Promoção", loja: "Amazon", categoria: "Notebook", destaque: "Versátil", link: "https://amzn.to/4ds3iIJ" },
-  { nome: "Mouse Gamer", preco: "Promoção", loja: "Amazon", categoria: "Periférico", destaque: "Setup", link: "https://amzn.to/4ds3IyY" },
-  { nome: "Impressora", preco: "Promoção", loja: "Amazon", categoria: "Escritório", destaque: "Casa", link: "https://amzn.to/4m6bjWd" },
-  { nome: "Controle PS5", preco: "Promoção", loja: "Amazon", categoria: "Console", destaque: "Extra", link: "https://amzn.to/4c1e9ae" },
-  { nome: "Produto Tech 1", preco: "Promoção", loja: "Amazon", categoria: "Tech", destaque: "Oferta", link: "https://amzn.to/4vdGPWs" },
-  { nome: "Produto Tech 2", preco: "Promoção", loja: "Amazon", categoria: "Tech", destaque: "Oferta", link: "https://amzn.to/4s8dhGH" },
+  {
+    nome: "PCYES RX 550 4GB GDDR5",
+    preco: "R$ 599,90",
+    loja: "Amazon",
+    categoria: "GPU",
+    destaque: "Entrada",
+    imagem: "https://m.media-amazon.com/images/I/61gmx1QJj3L._AC_SX679_.jpg",
+    link: "https://amzn.to/4sa3YGs",
+  },
+  {
+    nome: "AMD Ryzen 5 5500",
+    preco: "Promoção",
+    loja: "Amazon",
+    categoria: "CPU",
+    destaque: "Custo-benefício",
+    imagem: "https://m.media-amazon.com/images/I/61vGQNUEsGL._AC_SX679_.jpg",
+    link: "https://amzn.to/4c1e9ae",
+  },
+  {
+    nome: "Acer Aspire 5 A515-45-R2A3",
+    preco: "Promoção",
+    loja: "Amazon",
+    categoria: "Notebook",
+    destaque: "Versátil",
+    imagem: "https://m.media-amazon.com/images/I/71vvXGmdKWL._AC_SX679_.jpg",
+    link: "https://amzn.to/4ds3iIJ",
+  },
+  {
+    nome: "Controle sem fio DualSense para PS5",
+    preco: "Promoção",
+    loja: "Amazon",
+    categoria: "Console",
+    destaque: "Extra",
+    imagem: "https://m.media-amazon.com/images/I/61CGHv6kmWL._AC_SX679_.jpg",
+    link: "https://amzn.to/4ds3IyY",
+  },
+  {
+    nome: "Monitor Gamer TCL",
+    preco: "Promoção",
+    loja: "Amazon",
+    categoria: "Monitor",
+    destaque: "Gamer",
+    imagem: "https://m.media-amazon.com/images/I/71Y+6Q7wSkL._AC_SX679_.jpg",
+    link: "https://amzn.to/4dVjvX6",
+  },
+  {
+    nome: "Epson EcoTank L3250",
+    preco: "Promoção",
+    loja: "Amazon",
+    categoria: "Escritório",
+    destaque: "Casa",
+    imagem: "https://m.media-amazon.com/images/I/61Q6T9hj0UL._AC_SX679_.jpg",
+    link: "https://amzn.to/4m6bjWd",
+  },
+  {
+    nome: "Placa de Vídeo MSI Shadow 912-V537-037",
+    preco: "Promoção",
+    loja: "Amazon",
+    categoria: "GPU",
+    destaque: "Upgrade",
+    imagem: "https://m.media-amazon.com/images/I/71N2kA6nFCL._AC_SX679_.jpg",
+    link: "https://amzn.to/41JAWm2",
+  },
+  {
+    nome: "ASUS TUF GAMING B550M-PLUS",
+    preco: "Promoção",
+    loja: "Amazon",
+    categoria: "Placa-mãe",
+    destaque: "Popular",
+    imagem: "https://m.media-amazon.com/images/I/81A8nuE2MJL._AC_SX679_.jpg",
+    link: "https://amzn.to/4sgb6RI",
+  },
+  {
+    nome: "Cooler Master Fonte ATX",
+    preco: "Promoção",
+    loja: "Amazon",
+    categoria: "Fonte",
+    destaque: "Essencial",
+    imagem: "https://m.media-amazon.com/images/I/71S4B+0hTML._AC_SX679_.jpg",
+    link: "https://amzn.to/4sgilZZ",
+  },
+  {
+    nome: "HyperX Pulsefire Haste Wireless Black",
+    preco: "Promoção",
+    loja: "Amazon",
+    categoria: "Periférico",
+    destaque: "Setup",
+    imagem: "https://m.media-amazon.com/images/I/61N4p6f3QGL._AC_SX679_.jpg",
+    link: "https://amzn.to/4tkPNPK",
+  },
+  {
+    nome: "Kingston NV3 1TB NVMe SNV3S/1000G",
+    preco: "Promoção",
+    loja: "Amazon",
+    categoria: "Armazenamento",
+    destaque: "Upgrade",
+    imagem: "https://m.media-amazon.com/images/I/71n4vdyQ+BL._AC_SX679_.jpg",
+    link: "https://amzn.to/4vdGPWs",
+  },
+  {
+    nome: "HyperX Alloy Origins Core ABNT2",
+    preco: "Promoção",
+    loja: "Amazon",
+    categoria: "Periférico",
+    destaque: "Teclado",
+    imagem: "https://m.media-amazon.com/images/I/71m3R5LFJPL._AC_SX679_.jpg",
+    link: "https://amzn.to/4bNYgoL",
+  },
+  {
+    nome: "Headphone Gamer Havit HV-H2002d",
+    preco: "Promoção",
+    loja: "Amazon",
+    categoria: "Periférico",
+    destaque: "Áudio",
+    imagem: "https://m.media-amazon.com/images/I/61d1E8pM8UL._AC_SX679_.jpg",
+    link: "https://amzn.to/4mb6vin",
+  },
+  {
+    nome: "Nintendo Switch Compact Pikachu e Mimikyu",
+    preco: "Promoção",
+    loja: "Amazon",
+    categoria: "Console",
+    destaque: "Especial",
+    imagem: "https://m.media-amazon.com/images/I/71I2xj4f5NL._AC_SX679_.jpg",
+    link: "https://amzn.to/4mdSZdS",
+  },
+  {
+    nome: "Monitor AOC 24G4 com ajuste de altura",
+    preco: "Promoção",
+    loja: "Amazon",
+    categoria: "Monitor",
+    destaque: "Competitivo",
+    imagem: "https://m.media-amazon.com/images/I/71f0h9mC2yL._AC_SX679_.jpg",
+    link: "https://amzn.to/4s8dhGH",
+  },
 ];
 
 const categorias = [
@@ -217,7 +337,26 @@ export default function Home() {
                 </span>
               </div>
 
-              <h3 style={{ fontSize: 24, lineHeight: 1.25, marginTop: 18, marginBottom: 10 }}>{produto.nome}</h3>
+              <div
+                style={{
+                  width: "100%",
+                  aspectRatio: "16 / 10",
+                  borderRadius: 16,
+                  overflow: "hidden",
+                  background: "#0b1220",
+                  border: "1px solid #243041",
+                  marginTop: 18,
+                  marginBottom: 16,
+                }}
+              >
+                <img
+                  src={produto.imagem}
+                  alt={produto.nome}
+                  style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                />
+              </div>
+
+              <h3 style={{ fontSize: 24, lineHeight: 1.25, marginTop: 0, marginBottom: 10 }}>{produto.nome}</h3>
 
               <div style={{ color: "#94a3b8", fontSize: 15, marginBottom: 12 }}>{produto.loja}</div>
 
